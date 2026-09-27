@@ -6,7 +6,7 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 CONFIG_DIR="$SCRIPT_DIR/config"
 CONFIG_FILE="$CONFIG_DIR/vault.hcl"
 DATA_DIR="$SCRIPT_DIR/data"
-VAULT_ADDR="http://127.0.0.1:8200"
+VAULT_ADDR="http://0.0.0.0:8200"
 
 if ! command -v vault >/dev/null 2>&1; then
 	printf 'Error: Vault CLI is required. Install it before running this script.\n' >&2
@@ -20,11 +20,11 @@ if [[ ! -f "$CONFIG_FILE" ]]; then
 # Local learning configuration only. Do not expose this listener to a network.
 disable_mlock = true
 ui            = true
-api_addr      = "http://127.0.0.1:8200"
+api_addr      = "http://0.0.0.0:8200"
 log_level     = "info"
 
 listener "tcp" {
-  address     = "127.0.0.1:8200"
+  address     = "0.0.0.0:8200"
   tls_disable = 1
 }
 

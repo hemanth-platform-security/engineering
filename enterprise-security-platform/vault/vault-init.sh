@@ -5,7 +5,7 @@ umask 077
 # Local learning helper only. The saved init response contains sensitive keys
 # and the initial root token; protect it and never commit it to source control.
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-VAULT_ADDR=${VAULT_ADDR:-http://127.0.0.1:8200}
+VAULT_ADDR=${VAULT_ADDR:-http://0.0.0.0:8200}
 KEY_SHARES=${KEY_SHARES:-1}
 KEY_THRESHOLD=${KEY_THRESHOLD:-1}
 INIT_FILE=${VAULT_INIT_FILE:-"$SCRIPT_DIR/vault-init-output.json"}
